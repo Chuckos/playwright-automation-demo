@@ -1,0 +1,29 @@
+{
+  "name": "hudl-automation",
+  "version": "1.0.0",
+  "description": "Automated tests for Hudl login functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "setup": "mkdir -p storage && touch storage/hudl-auth.json && echo '{}' > storage/hudl-auth.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^22.13.14",
+    "prettier": "^3.5.3",
+    "dotenv": "^16.4.7"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "@playwright/test": "^1.51.1"
+  }
+}

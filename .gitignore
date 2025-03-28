@@ -1,0 +1,20 @@
+
+# Playwright
+node_modules/
+**/test-results/
+**/playwright-report/
+**/blob-report/
+**/playwright/.cache/
+**/tests/example.spec.ts
+**/tests-examples/
+
+# macOS
+.DS_Store
+
+# Environment file
+.env
+
+# Storage
+storage/
+storage/*
+!storage/.gitkeep
