@@ -75,11 +75,10 @@ test.describe('Session management', () => {
   }) => {
     const { email, password } = getHudlCredentials();
 
-    // PHASE 1: Initial login and save state
     // Creates a new context and saves authentication state
     const context1 = await browser.newContext();
     try {
-      //don't need BASE_URL here
+ 
       const page1 = await context1.newPage();
       await navigateToLoginPage(page1);
       await login(page1, email, password);
@@ -88,7 +87,7 @@ test.describe('Session management', () => {
       await context1.close();
     }
 
-    
+  
     // Creates a new context with saved auth state and verifies login persistence
     const context2 = await browser.newContext({
       storageState: STORAGE_FILE,
