@@ -11,7 +11,7 @@ This project contains automated end-to-end tests for [Hudl's](https://www.hudl.c
 
 Clone the repository and then install the dependencies:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Chuckos/playwright-automation-demo.git
 cd Hudl
 npm install
 ```
