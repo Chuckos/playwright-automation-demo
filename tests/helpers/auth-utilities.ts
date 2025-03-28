@@ -4,8 +4,9 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 /**
- * Navigates to the Hudl login page from the homepage
- * @param page - Playwright page object
+ *
+ * @param page - The Playwright `Page` object used to interact with the browser.
+ * @returns A promise that resolves when the navigation and interactions are complete.
  */
 export async function navigateToLoginPage(page: Page) {
   await page.goto('https://www.hudl.com/en_gb/');
@@ -90,6 +91,7 @@ export async function initiatePasswordReset(page: Page, email: string) {
  * Verifies navigation to social login providers
  * @param page - Playwright page object
  * @param provider - Social login provider ('Google', 'Facebook', or 'Apple')
+ * @throws Will throw an error if navigation or verification fails
  */
 export async function verifySocialLoginNavigation(
   page: Page,

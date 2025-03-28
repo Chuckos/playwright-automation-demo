@@ -14,14 +14,20 @@ import { getHudlCredentials } from '../utils/env';
 import fs from 'fs';
 import path from 'path';
 
+/** Constants for application configuration */
 const BASE_URL = 'https://www.hudl.com/en_gb/';
 const STORAGE_FILE = 'storage/hudl-auth.json';
 
+/**
+ * Core authentication flow tests
+ * Covers primary user journeys for authentication
+ */
 test.describe('Authentication flows', () => {
   test.beforeEach(async ({ page }) => {
     await navigateToLoginPage(page);
   });
 
+  // Core authentication tests
   test('successful login redirects to dashboard', async ({ page }) => {
     const { email, password } = getHudlCredentials();
     await login(page, email, password);
@@ -58,6 +64,11 @@ test.describe('Authentication flows', () => {
     await verifySocialLoginNavigation(page, 'Apple');
   });
 });
+
+/**
+ * Session persistence tests
+ * Verifies that authentication state is maintained across browser sessions
+ */
 test.describe('Session management', () => {
   test('Should stay logged in after reopening browser with saved state', async ({
     browser,
@@ -65,6 +76,7 @@ test.describe('Session management', () => {
     const { email, password } = getHudlCredentials();
 
     // PHASE 1: Initial login and save state
+    // Creates a new context and saves authentication state
     const context1 = await browser.newContext();
     try {
       //don't need BASE_URL here
@@ -76,7 +88,8 @@ test.describe('Session management', () => {
       await context1.close();
     }
 
-    // PHASE 2: Verify persistent login
+    
+    // Creates a new context with saved auth state and verifies login persistence
     const context2 = await browser.newContext({
       storageState: STORAGE_FILE,
     });
@@ -90,6 +103,10 @@ test.describe('Session management', () => {
   });
 });
 
+/**
+ * Input validation tests
+ * Verifies form validation and error handling
+ */
 test.describe('Validation checks', () => {
   test.beforeEach(async ({ page }) => {
     await navigateToLoginPage(page);
